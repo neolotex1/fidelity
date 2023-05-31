@@ -1,0 +1,1254 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="DashBoard.master.cs" Inherits="Lotex.EnterpriseSolutions.WebUI.DashBoard" %>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head id="Head1" runat="server">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="Version" content="11.0.6" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>doQman</title>
+   
+   
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/Scripts/modernizr-2.5.3.js") %>"></script>
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-1.7-vsdoc.js") %>"></script>
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-1.7.min.js") %>"></script>
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-1.7.js") %>"></script>
+    <script type="text/javascript" language="javascript" src="<%=Page.ResolveClientUrl("~/Scripts/Common.js") %>"></script>
+    <script type="text/javascript" language="javascript" src="<%=Page.ResolveClientUrl("~/Scripts/AjaxPostScripts.js") %>"></script>
+    <script type="text/javascript" language="javascript" src="<%=Page.ResolveClientUrl("~/Scripts/HTMLEncoding.js") %>"></script>
+    <script type="text/javascript" language="javascript" src="<%=Page.ResolveClientUrl("~/Scripts/Chart.bundle.js") %>"></script>
+    <script type="text/javascript" language="javascript" src="<%=Page.ResolveClientUrl("~/Scripts/utils.js") %>"></script>
+    <script language="javascript" type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+    <link id="Link2" rel="icon" href="<%= Page.ResolveClientUrl("~/Images/favicon1.ico") %>"
+        type="image/ico" />
+         <asp:ContentPlaceHolder ID="test" runat="server">
+    <style type="text/css">
+       
+        input[type='file'] 
+        {
+             color: transparent;
+        }
+    
+        input[type="radio"], input[type="checkbox"]
+        {
+            width: 20px;
+            height: 20px;
+            vertical-align: top;
+            background: red;
+        }
+        .mainnav-sm .hi_text
+        {
+            display: none;
+        }
+        .hi_text
+        {
+            margin-left: 10px;
+        }
+        input[type="checkbox"] + label
+        {
+            padding-left: 5px;
+        }
+    </style>
+        <script type="text/javascript" language="javascript">
+
+            //service url
+            var authority = getRootWebSitePath();
+            var coreServiceURL = authority + "/CoreService.svc";
+
+            function getRootWebSitePath() {
+                var _location = document.location.toString();
+                var applicationNameIndex = _location.indexOf('/', _location.indexOf('://') + 3);
+                var applicationName = _location.substring(0, applicationNameIndex) + '/';
+                var webFolderIndex = _location.indexOf('/', _location.indexOf(applicationName) + applicationName.length);
+                var webFolderFullPath = _location.substring(0, webFolderIndex);
+                //If develoment environement WEB folder won't be there
+                webFolderFullPath = webFolderFullPath.replace('/Accounts', '');
+                //DMS04-3777M -- used replace for "Secure" too (first letter upper case)
+                webFolderFullPath = webFolderFullPath.replace('/secure', '').replace('/Secure', '');
+                webFolderFullPath = webFolderFullPath.replace('/Workflow', '');
+                return webFolderFullPath;
+            }
+
+
+
+
+
+            function changeMenu(type, MenuUrl) {
+
+
+                var currentapplicationMenu = document.getElementById("<%= hdnApplicationName.ClientID %>").value;
+                //                if (currentapplicationMenu != type && type == "WORKFLOW") {
+                //                    document.getElementById("<%= hdnApplicationName.ClientID %>").value = "WORKFLOW";
+                //                  
+                //                    
+                //                }
+                //                else if (currentapplicationMenu != type && type == "DMS") {
+                //                    document.getElementById("<%= hdnApplicationName.ClientID %>").value = "DMS";
+                //                    
+                //                   
+                //                   
+                //                }
+                window.location.href = MenuUrl;
+                return false;
+            }
+
+          
+        </script>
+        <script language="javascript" type="text/javascript">
+            function prevent_previous_page_return() {
+                window.history.forward();
+            }
+            function HideMenu(id) {
+                document.getElementById(id).style.visibility = "hidden";
+            }
+
+            function swallowEnter() {
+                if (event.keyCode == 13) {
+                    event.keyCode = null;
+                    return;
+                }
+            }
+            //Function for auto scrolltop when error message is displayed
+            function Scrolltop() {
+                $("html, body").animate({ scrollTop: 0 }, 600);
+                //$("[id$=divMsg]").show("slow").delay(3000).hide("slow");
+            }
+        </script>
+        <!--STYLESHEET-->
+        <!--=================================================-->
+        <!--Open Sans Font [ OPTIONAL ] -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin"
+            rel="stylesheet" />
+        <!--Bootstrap Stylesheet [ REQUIRED ]-->
+        <link href="<%= Page.ResolveClientUrl("~/css/bootstrap.css") %>" rel="stylesheet" />
+        <!--<link href="<%= Page.ResolveClientUrl("~/css/bootstrap.min.css") %>" rel="stylesheet" />-->
+        <!--Nifty Stylesheet [ REQUIRED ]-->
+        <link href="<%= Page.ResolveClientUrl("~/css/nifty.min.css") %>" rel="stylesheet" />
+        <!--Font Awesome [ OPTIONAL ]-->
+        <link href="<%= Page.ResolveClientUrl("~/plugins/font-awesome/css/font-awesome.min.css") %>"
+            rel="stylesheet" />
+        <!--Animate.css [ OPTIONAL ]-->
+        <link href="<%= Page.ResolveClientUrl("~/plugins/animate-css/animate.min.css") %>"
+            rel="stylesheet" />
+        <!--Morris.js [ OPTIONAL ]-->
+        <link href="<%= Page.ResolveClientUrl("~/plugins/morris-js/morris.min.css") %>" rel="stylesheet" />
+        <!--Switchery [ OPTIONAL ]-->
+        <link href="<%= Page.ResolveClientUrl("~/plugins/switchery/switchery.min.css") %>"
+            rel="stylesheet" />
+        <!--Bootstrap Select [ OPTIONAL ]-->
+        <link href="<%= Page.ResolveClientUrl("~/plugins/bootstrap-select/bootstrap-select.min.css") %>"
+            rel="stylesheet" />
+        <!--Demo script [ DEMONSTRATION ]-->
+        <link href="<%= Page.ResolveClientUrl("~/css/demo/nifty-demo.min.css") %>" rel="stylesheet" />
+        <!-- ===== -->
+        <!--Bootstrap Tags Input [ OPTIONAL ]-->
+        <link href="<%= Page.ResolveClientUrl("~/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css") %>"
+            rel="stylesheet" />
+        <!--Chosen [ OPTIONAL ]-->
+        <link href="<%= Page.ResolveClientUrl("~/plugins/chosen/chosen.min.css") %>" rel="stylesheet" />
+        <!--noUiSlider [ OPTIONAL ]-->
+        <link href="<%= Page.ResolveClientUrl("~/plugins/noUiSlider/jquery.nouislider.min.css") %>"
+            rel="stylesheet" />
+        <link href="<%= Page.ResolveClientUrl("~/plugins/noUiSlider/jquery.nouislider.pips.min.css") %>"
+            rel="stylesheet" />
+        <!--Bootstrap Timepicker [ OPTIONAL ]-->
+        <link href="<%= Page.ResolveClientUrl("~/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css") %>"
+            rel="stylesheet" />
+        <!--Bootstrap Datepicker [ OPTIONAL ]-->
+        <link href="<%= Page.ResolveClientUrl("~/plugins/bootstrap-datepicker/bootstrap-datepicker.css") %>"
+            rel="stylesheet" />
+        <!--Dropzone [ OPTIONAL ]-->
+        <link href="<%= Page.ResolveClientUrl("~/plugins/dropzone/dropzone.css") %>" rel="stylesheet" />
+        <!--Summernote [ OPTIONAL ]-->
+        <link href="<%= Page.ResolveClientUrl("~/plugins/summernote/summernote.min.css") %>"
+            rel="stylesheet" />
+        <!--SCRIPT
+        <link href="<%= Page.ResolveClientUrl("~/plugins/summernote/jquery.Jcrop.css") %>" -->
+        <!--=================================================-->
+        <!--Page Load Progress Bar [ OPTIONAL ]-->
+        <link href="<%= Page.ResolveClientUrl("~/plugins/pace/pace.min.css") %>" rel="stylesheet" />
+        <script src="<%= Page.ResolveClientUrl("~/plugins/pace/pace.min.js") %>" type="text/javascript" language="javascript"></script>
+        <link href="<%= Page.ResolveClientUrl("~/css/jquery.dataTables.min.css") %>" rel="stylesheet" />
+
+        <asp:ContentPlaceHolder ID="Head" runat="server">
+        </asp:ContentPlaceHolder>
+    </asp:ContentPlaceHolder>
+</head>
+<!--TIPS-->
+<!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="sm1" runat="server" AsyncPostBackTimeout="1600" />
+    <div id="container" class="effect mainnav-sm navbar-fixed mainnav-fixed">
+        <!--NAVBAR-->
+        <!--===================================================-->
+        <header id="navbar">
+			<div id="navbar-container" class="boxed">
+             
+				<!--Brand logo & name-->
+				<!--================================-->
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand">
+						<img src="<%= Page.ResolveClientUrl("~/Images/doqman-logo-dashboard.png") %>" alt="doQman" class="brand-icon1">
+						<div class="">
+						<img src="<%= Page.ResolveClientUrl("~/Images/doqman-logo-sm.png") %>" alt="doQman" class="brand-icon2" height="40" width="52">
+						</div>
+					</a>
+				</div>
+				<!--================================-->
+				<!--End brand logo & name-->
+
+               
+				<!--Navbar Dropdown-->
+				<!--================================-->
+				<div class="navbar-content clearfix" style="width: 100%">
+					<ul class="nav navbar-top-links pull-left">
+
+						<!--Navigation toogle button-->
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<li class="tgl-menu-btn">
+							<a class="mainnav-toggle" href="#">
+								<i class="fa fa-navicon fa-lg"></i>
+							</a>
+						</li>
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<!--End Navigation toogle button-->
+
+					</ul>
+					<ul class="nav navbar-top-links pull-right">
+
+						
+						<!--Notification dropdown-->
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<li class="dropdown right-align-notif">
+							<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+								<i class="fa fa-bell fa-lg"></i>
+                                <%--MOBQMAN-6194 D--%>
+								<span class="badge badge-header badge-danger">5</span>
+							</a>
+
+							<!--Notification dropdown menu-->
+							<%--<div class="dropdown-menu dropdown-menu-md with-arrow">
+								<div class="pad-all bord-btm">
+									<p class="text-lg text-muted text-thin mar-no">You have 3 messages.</p>
+								</div>
+								<div class="nano scrollable">
+									<div class="nano-content">
+										<ul class="head-list">
+
+											<!-- Dropdown list-->
+											<li>
+												<a href="#">
+													<div class="clearfix">
+														<p class="pull-left">Database Repair</p>
+														<p class="pull-right">70%</p>
+													</div>
+													<div class="progress progress-sm">
+														<div style="width: 70%;" class="progress-bar">
+															<span class="sr-only">70% Complete</span>
+														</div>
+													</div>
+												</a>
+											</li>
+
+											<!-- Dropdown list-->
+											<li>
+												<a href="#">
+													<div class="clearfix">
+														<p class="pull-left">Upgrade Progress</p>
+														<p class="pull-right">10%</p>
+													</div>
+													<div class="progress progress-sm">
+														<div style="width: 10%;" class="progress-bar progress-bar-warning">
+															<span class="sr-only">10% Complete</span>
+														</div>
+													</div>
+												</a>
+											</li>
+									
+											<!-- Dropdown list-->
+											<li>
+												<a href="#" class="media">
+													<div class="media-left">
+														<span class="icon-wrap icon-circle bg-primary">
+															<i class="fa fa-comment fa-lg"></i>
+														</span>
+													</div>
+													<div class="media-body">
+														<div class="text-nowrap">New comments waiting approval</div>
+														<small class="text-muted">15 minutes ago</small>
+													</div>
+												</a>
+											</li>
+									
+											<!-- Dropdown list-->
+											<li>
+												<a href="#" class="media">
+											<span class="badge badge-success pull-right">90%</span>
+													<div class="media-left">
+														<span class="icon-wrap icon-circle bg-danger">
+															<i class="fa fa-hdd-o fa-lg"></i>
+														</span>
+													</div>
+													<div class="media-body">
+														<div class="text-nowrap">HDD is full</div>
+														<small class="text-muted">50 minutes ago</small>
+													</div>
+												</a>
+											</li>
+									
+											<!-- Dropdown list-->
+											<li>
+												<a href="#" class="media">
+													<div class="media-left">
+														<span class="icon-wrap bg-info">
+															<i class="fa fa-file-word-o fa-lg"></i>
+														</span>
+													</div>
+													<div class="media-body">
+														<div class="text-nowrap">Write a news article</div>
+														<small class="text-muted">Last Update 8 hours ago</small>
+													</div>
+												</a>
+											</li>
+									
+											<!-- Dropdown list-->
+											<li>
+												<a href="#" class="media">
+											<span class="label label-danger pull-right">New</span>
+													<div class="media-left">
+														<span class="icon-wrap bg-purple">
+															<i class="fa fa-comment fa-lg"></i>
+														</span>
+													</div>
+													<div class="media-body">
+														<div class="text-nowrap">Comment Sorting</div>
+														<small class="text-muted">Last Update 8 hours ago</small>
+													</div>
+												</a>
+											</li>
+									
+											<!-- Dropdown list-->
+											<li>
+												<a href="#" class="media">
+													<div class="media-left">
+														<span class="icon-wrap bg-success">
+															<i class="fa fa-user fa-lg"></i>
+														</span>
+													</div>
+													<div class="media-body">
+														<div class="text-nowrap">New User Registered</div>
+														<small class="text-muted">4 minutes ago</small>
+													</div>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<!--Dropdown footer-->
+								<div class="pad-all bord-top">
+									<a href="#" class="btn-link text-dark box-block">
+										<i class="fa fa-angle-right fa-lg pull-right"></i>Show All Notifications
+									</a>
+								</div>
+							</div>--%>
+						</li>
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<!--End notifications dropdown-->
+						
+						<!--Language selector-->
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<%--<li class="dropdown right-align-lang">
+							<a id="demo-lang-switch" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
+								<span class="lang-selected">
+									<img class="lang-flag" src="<%= Page.ResolveClientUrl("~/img/flags/united-kingdom.png") %>" alt="English">
+									<span class="lang-id">EN</span>
+									<span class="lang-name">English</span>
+								</span>
+							</a>
+
+							<!--Language selector menu-->
+							<ul class="head-list dropdown-menu with-arrow">
+								<li>
+									<!--English-->
+									<a href="#" class="active">
+										<img class="lang-flag" src="<%= Page.ResolveClientUrl("~/img/flags/united-kingdom.png") %>" alt="English">
+										<span class="lang-id">EN</span>
+										<span class="lang-name">English</span>
+									</a>
+								</li>
+								<li>
+									<!--France-->
+									<a href="#">
+										<img class="lang-flag" src="<%= Page.ResolveClientUrl("~/img/flags/france.png") %>"  alt="France">
+										<span class="lang-id">FR</span>
+										<span class="lang-name">Fran&ccedil;ais</span>
+									</a>
+								</li>
+								<li>
+									<!--Germany-->
+									<a href="#">
+										<img class="lang-flag" src="<%= Page.ResolveClientUrl("~/img/flags/germany.png") %>" alt="Germany">
+										<span class="lang-id">DE</span>
+										<span class="lang-name">Deutsch</span>
+									</a>
+								</li>
+								<li>
+									<!--Italy-->
+									<a href="#">
+										<img class="lang-flag" src="<%= Page.ResolveClientUrl("~/img/flags/italy.png") %>" alt="Italy">
+										<span class="lang-id">IT</span>
+										<span class="lang-name">Italiano</span>
+									</a>
+								</li>
+								<li>
+									<!--Spain-->
+									<a href="#">
+										<img class="lang-flag" src="<%= Page.ResolveClientUrl("~/img/flags/spain.png") %>" alt="Spain">
+										<span class="lang-id">ES</span>
+										<span class="lang-name">Espa&ntilde;ol</span>
+									</a>
+								</li>
+							</ul>
+						</li>--%>
+						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<!--End language selector-->
+
+
+
+						
+
+					</ul>
+				</div>
+				<!--================================-->
+				<!--End Navbar Dropdown-->
+			
+			<div class="top-boder-strip"></div>
+			</div>
+		</header>
+        <!-- To show loading / processing logo -->
+        <!--===================================================-->
+        <!--END NAVBAR-->
+        <div class="boxed">
+            <!--CONTENT CONTAINER-->
+            <!--===================================================-->
+            <div id="content-container">
+                <div id="statusPopup" style="display: none; z-index: 1000; left: 49%; top: 49%;">
+                    <div>
+                        <img src="<%= Page.ResolveClientUrl("~/Images/sprites.gif") %>" alt="Loading......" />
+                    </div>
+                </div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder0" runat="server">
+                </asp:ContentPlaceHolder>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+                <!--===================================================-->
+                <!--End page content-->
+            </div>
+            <!--===================================================-->
+            <!--END CONTENT CONTAINER-->
+            <!--MAIN NAVIGATION-->
+            <!--===================================================-->
+            <nav id="mainnav-container">
+				<div id="mainnav">
+				
+                    				
+					<!--Shortcut buttons-->
+					<!--================================-->
+					 <div id="mainnav-shortcut">
+                    	<ul class='list-unstyled'>
+                        <%=Module %>
+											
+                        </ul>
+						
+						
+					</div>
+					
+					
+					<!--================================-->
+					<!--End shortcut buttons-->
+
+
+					<!--Menu-->
+					<!--================================-->
+					<div id="mainnav-menu-wrap">
+						<div class="nano" runat="server" id="menuDiv">
+							<div class="nano-content" >
+                            <ul id="mainnav-menu" class="list-group" >
+                            
+							<li>
+								<a href="#" >
+								
+									<img class="img-circle img-user" src="<%= Page.ResolveClientUrl("~/Images/admin.png") %>" alt="Profile Picture">
+								
+								 <span class="menu-title">
+                                 <strong> <asp:Label ID="lblUserName" runat="server"></asp:Label></strong>
+                                 </span>
+                                 <i class="arrow"></i>
+                               
+							  </a>
+						
+									<!--Submenu-->
+						<ul class="collapse">
+                        	<%--MOBQMAN-6199 D--%>
+							<%--<li><a href="#"><i class="fa fa-user fa-fw fa-lg"></i> Profile</a></li>
+							<li><a href="#"><i class="fa fa-gear fa-fw fa-lg"></i> Settings</a></li>
+							<li><a href="#"><i class="fa fa-question-circle fa-fw fa-lg"></i> Help </a></li>
+							<li><a href="#"><i class="fa fa-lock fa-fw fa-lg"></i> Lock screen</a></li>--%>
+							<li><asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click"  class="btn-primary" CausesValidation="False" TagName="Read"> <span class="dashboard-logout"><i class="fa fa-power-off fa-fw fa-lg"></i> LOGOUT</span></asp:LinkButton></li>	
+						</ul  >
+					</li>
+							
+							<%=Menus %>
+							
+							
+                                </ul>
+							</div>
+						</div>
+					</div>
+					<!--================================-->
+					<!--End menu-->
+        </div>
+        </nav>
+            <!--===================================================-->
+            <!--END MAIN NAVIGATION-->
+        </div>
+        <!-- FOOTER -->
+        <!--===================================================-->
+        <footer id="footer">
+
+			<!-- Visible when footer positions are fixed -->
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+			<div class="show-fixed pull-right">
+				<ul class="footer-list list-inline">
+					<li>
+						<p class="text-sm">SEO Proggres</p>
+						<div class="progress progress-sm progress-light-base">
+							<div style="width: 80%" class="progress-bar progress-bar-danger"></div>
+						</div>
+					</li>
+
+					<li>
+						<p class="text-sm">Online Tutorial</p>
+						<div class="progress progress-sm progress-light-base">
+							<div style="width: 80%" class="progress-bar progress-bar-primary"></div>
+						</div>
+					</li>
+					<li>
+						<button class="btn btn-sm btn-dark btn-active-success">Checkout</button>
+					</li>
+				</ul>
+			</div>
+
+
+
+			<!-- Visible when footer positions are static -->
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+			<div class="hide-fixed pull-right pad-rgt">doQman v1.0</div>
+
+
+
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+			<!-- Remove the class name "show-fixed" and "hide-fixed" to make the content always appears. -->
+			<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+			<p class="pad-lft">&#0169; <%= DateTime.Today.Year.ToString() %> NeoLotex Business Solutions</p>
+
+
+
+		</footer>
+        <!--===================================================-->
+        <!-- END FOOTER -->
+        <!-- SCROLL TOP BUTTON -->
+        <!--===================================================-->
+        <button id="scroll-top" class="btn">
+            <i class="fa fa-chevron-up"></i>
+        </button>
+        <!--===================================================-->
+    </div>
+    <!--===================================================-->
+    <!-- END OF CONTAINER -->
+    <!-- SETTINGS - DEMO PURPOSE ONLY -->
+    <!--===================================================-->
+    <div id="demo-set" class="demo-set">
+        <div class="demo-set-body bg-dark">
+            <div id="demo-set-alert">
+            </div>
+            <div class="demo-set-content clearfix">
+                <div class="col-xs-6 col-md-4">
+                    <h4 class="text-lg mar-btm">
+                        Animations</h4>
+                    <div id="demo-anim" class="mar-btm">
+                        <label class="form-checkbox form-icon active">
+                            <input type="checkbox" checked="">
+                            Enable Animations
+                        </label>
+                    </div>
+                    <p>
+                        Transition effects</p>
+                    <select id="demo-ease">
+                        <option value="effect" selected>ease (Default)</option>
+                        <option value="easeInQuart">easeInQuart</option>
+                        <option value="easeOutQuart">easeOutQuart</option>
+                        <option value="easeInBack">easeInBack</option>
+                        <option value="easeOutBack">easeOutBack</option>
+                        <option value="easeInOutBack">easeInOutBack</option>
+                        <option value="steps">Steps</option>
+                        <option value="jumping">Jumping</option>
+                        <option value="rubber">Rubber</option>
+                    </select>
+                    <hr class="bord-no">
+                    <br>
+                    <h4 class="text-lg mar-btm">
+                        Navigation</h4>
+                    <div class="mar-btm">
+                        <label id="demo-nav-fixed" class="form-checkbox form-icon">
+                            <input type="checkbox">
+                            Fixed
+                        </label>
+                    </div>
+                    <label id="demo-nav-coll" class="form-checkbox form-icon">
+                        <input type="checkbox">
+                        Collapsed
+                    </label>
+                    <hr class="bord-no">
+                    <br>
+                    <h4 class="text-lg mar-btm">
+                        Off Canvas Navigation</h4>
+                    <select id="demo-nav-offcanvas">
+                        <option value="none" selected disabled="disabled">-- Select Mode --</option>
+                        <option value="push">Push</option>
+                        <option value="slide">Slide in on top</option>
+                        <option value="reveal">Reveal</option>
+                    </select>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <h4 class="text-lg mar-btm">
+                        Aside</h4>
+                    <div class="form-block">
+                        <label id="demo-asd-vis" class="form-checkbox form-icon">
+                            <input type="checkbox">
+                            Visible
+                        </label>
+                        <label id="demo-asd-fixed" class="form-checkbox form-icon">
+                            <input type="checkbox">
+                            Fixed
+                        </label>
+                        <label id="demo-asd-align" class="form-checkbox form-icon">
+                            <input type="checkbox">
+                            Aside on the left side
+                        </label>
+                        <label id="demo-asd-themes" class="form-checkbox form-icon">
+                            <input type="checkbox">
+                            Bright Theme
+                        </label>
+                    </div>
+                    <hr class="bord-no">
+                    <br>
+                    <h4 class="text-lg mar-btm">
+                        Header / Navbar</h4>
+                    <label id="demo-navbar-fixed" class="form-checkbox form-icon">
+                        <input type="checkbox">
+                        Fixed
+                    </label>
+                    <hr class="bord-no">
+                    <br>
+                    <h4 class="text-lg mar-btm">
+                        Footer</h4>
+                    <label id="demo-footer-fixed" class="form-checkbox form-icon">
+                        <input type="checkbox">
+                        Fixed
+                    </label>
+                </div>
+                <div class="col-xs-12 col-md-5">
+                    <div id="demo-theme">
+                        <h4 class="text-lg mar-btm">
+                            Color Themes</h4>
+                        <div class="demo-theme-btn">
+                            <a href="#" class="demo-theme demo-a-light add-tooltip" data-theme="theme-light"
+                                data-type="a" data-title="(A). Light">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-a-navy add-tooltip" data-theme="theme-navy"
+                                data-type="a" data-title="(A). Navy Blue">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-a-ocean add-tooltip" data-theme="theme-ocean"
+                                data-type="a" data-title="(A). Ocean">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-a-lime add-tooltip" data-theme="theme-lime"
+                                data-type="a" data-title="(A). Lime">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-a-purple add-tooltip" data-theme="theme-purple"
+                                data-type="a" data-title="(A). Purple">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-a-dust add-tooltip" data-theme="theme-dust"
+                                data-type="a" data-title="(A). Dust">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-a-mint add-tooltip" data-theme="theme-mint"
+                                data-type="a" data-title="(A). Mint">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-a-yellow add-tooltip" data-theme="theme-yellow"
+                                data-type="a" data-title="(A). Yellow">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-a-well-red add-tooltip" data-theme="theme-well-red"
+                                data-type="a" data-title="(A). Well Red">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-a-coffee add-tooltip" data-theme="theme-coffee"
+                                data-type="a" data-title="(A). Coffee">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-a-prickly-pear add-tooltip" data-theme="theme-prickly-pear"
+                                data-type="a" data-title="(A). Prickly pear">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-a-dark add-tooltip" data-theme="theme-dark"
+                                data-type="a" data-title="(A). Dark">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="demo-theme-btn">
+                            <a href="#" class="demo-theme demo-b-light add-tooltip" data-theme="theme-light"
+                                data-type="b" data-title="(B). Light">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-b-navy add-tooltip" data-theme="theme-navy"
+                                data-type="b" data-title="(B). Navy Blue">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-b-ocean add-tooltip" data-theme="theme-ocean"
+                                data-type="b" data-title="(B). Ocean">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-b-lime add-tooltip" data-theme="theme-lime"
+                                data-type="b" data-title="(B). Lime">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-b-purple add-tooltip" data-theme="theme-purple"
+                                data-type="b" data-title="(B). Purple">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-b-dust add-tooltip" data-theme="theme-dust"
+                                data-type="b" data-title="(B). Dust">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-b-mint add-tooltip" data-theme="theme-mint"
+                                data-type="b" data-title="(B). Mint">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-b-yellow add-tooltip" data-theme="theme-yellow"
+                                data-type="b" data-title="(B). Yellow">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-b-well-red add-tooltip" data-theme="theme-well-red"
+                                data-type="b" data-title="(B). Well red">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-b-coffee add-tooltip" data-theme="theme-coffee"
+                                data-type="b" data-title="(B). Coofee">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-b-prickly-pear add-tooltip" data-theme="theme-prickly-pear"
+                                data-type="b" data-title="(B). Prickly pear">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-b-dark add-tooltip" data-theme="theme-dark"
+                                data-type="b" data-title="(B). Dark">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="demo-theme-btn">
+                            <a href="#" class="demo-theme demo-c-light add-tooltip" data-theme="theme-light"
+                                data-type="c" data-title="(C). Light">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-c-navy add-tooltip" data-theme="theme-navy"
+                                data-type="c" data-title="(C). Navy Blue">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-c-ocean add-tooltip" data-theme="theme-ocean"
+                                data-type="c" data-title="(C). Ocean">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-c-lime add-tooltip" data-theme="theme-lime"
+                                data-type="c" data-title="(C). Lime">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-c-purple add-tooltip" data-theme="theme-purple"
+                                data-type="c" data-title="(C). Purple">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-c-dust add-tooltip" data-theme="theme-dust"
+                                data-type="c" data-title="(C). Dust">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-c-mint add-tooltip" data-theme="theme-mint"
+                                data-type="c" data-title="(C). Mint">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-c-yellow add-tooltip" data-theme="theme-yellow"
+                                data-type="c" data-title="(C). Yellow">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-c-well-red add-tooltip" data-theme="theme-well-red"
+                                data-type="c" data-title="(C). Well Red">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-c-coffee add-tooltip" data-theme="theme-coffee"
+                                data-type="c" data-title="(C). Coffee">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-c-prickly-pear add-tooltip" data-theme="theme-prickly-pear"
+                                data-type="c" data-title="(C). Prickly pear">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a><a href="#" class="demo-theme demo-c-dark add-tooltip" data-theme="theme-dark"
+                                data-type="c" data-title="(C). Dark">
+                                <div class="demo-theme-brand">
+                                </div>
+                                <div class="demo-theme-head">
+                                </div>
+                                <div class="demo-theme-nav">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pad-all text-left">
+                <hr class="hr-sm">
+                <p class="demo-set-save-text">
+                    * All settings will be saved automatically.</p>
+                <button id="demo-reset-settings" class="btn btn-primary btn-labeled fa fa-refresh mar-btm">
+                    Restore Default Settings</button>
+            </div>
+        </div>
+        <button id="demo-set-btn" class="btn btn-sm">
+            <i class="fa fa-cog fa-2x"></i>
+        </button>
+    </div>
+    <asp:HiddenField ID="hdnApplicationName" runat="server" Value="" />
+    <!--===================================================-->
+    <!-- END SETTINGS -->
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
+    <!--jQuery [ REQUIRED ]-->
+    <%--<script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/js/jquery-2.1.1.min.js") %>"></script>--%>
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/js/bootstrap.min.js") %>"></script>
+    <!--Fast Click [ OPTIONAL ]-->
+    <script type="text/javascript" language="javascript" src="<%=  Page.ResolveClientUrl("~/plugins/fast-click/fastclick.min.js") %>"></script>
+    <!--Nifty Admin [ RECOMMENDED ]-->
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/js/nifty.min.js") %>"></script>
+      <!--SweetAlert-->
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/js/sweetalert.min.js") %>"></script>
+    <!--Sparkline [ OPTIONAL ]-->
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/plugins/sparkline/jquery.sparkline.min.js") %>"></script>
+    <!--Skycons [ OPTIONAL ]-->
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/plugins/skycons/skycons.min.js") %>"></script>
+    <!--Bootstrap Select [ OPTIONAL ]-->
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/plugins/bootstrap-select/bootstrap-select.min.js") %>"></script>
+    <!--Bootstrap Tags Input [ OPTIONAL ]-->
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js") %>"></script>
+    <!--Chosen [ OPTIONAL ]-->
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/plugins/chosen/chosen.jquery.min.js") %>"></script>
+    <!--Bootstrap Datepicker [ OPTIONAL ]-->
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/plugins/bootstrap-datepicker/bootstrap-datepicker.js") %>"></script>
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/plugins/bootbox/bootbox.min.js") %>"></script>
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/Workflow/WorkflowJS/jquery.Jcrop.js") %>"></script>
+    <!--Switchery [ OPTIONAL ]-->
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/plugins/switchery/switchery.min.js") %>"></script>
+    <script language="javascript" type="text/javascript">
+        /* ===========================================================
+        * bootstrap-checkbox.js
+        * ===========================================================
+        * Copyright 2013 Roberto Montresor
+        *
+        * Licensed under the Apache License, Version 2.0 (the "License");
+        * you may not use this file except in compliance with the License.
+        * You may obtain a copy of the License at
+        *
+        * http://www.apache.org/licenses/LICENSE-2.0
+        *
+        * Unless required by applicable law or agreed to in writing, software
+        * distributed under the License is distributed on an "AS IS" BASIS,
+        * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        * See the License for the specific language governing permissions and
+        * limitations under the License.
+        * ========================================================== */
+
+        !function ($) {
+            var Checkbox = function (element, options, e) {
+                if (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                }
+                this.$element = $(element);
+                this.$newElement = null;
+                this.button = null;
+                this.label = null;
+                this.labelPrepend = null;
+                this.options = $.extend({}, $.fn.checkbox.defaults, this.$element.data(), typeof options == 'object' && options);
+                this.buttonStyle = this.options.buttonStyle;
+                this.buttonStyleChecked = this.options.buttonStyleChecked;
+                this.defaultState = this.options.defaultState;
+                this.defaultEnabled = this.options.defaultEnabled;
+                this.init();
+            };
+
+            Checkbox.prototype = {
+
+                constructor: Checkbox,
+
+                init: function (e) {
+                    this.$element.hide();
+                    this.$element.attr('autocomplete', 'off');
+                    var classList = this.$element.attr('class') !== undefined ? this.$element.attr('class').split(/\s+/) : '';
+                    var template = this.getTemplate();
+                    this.$element.after(template);
+                    this.$newElement = this.$element.next('.bootstrap-checkbox');
+                    this.button = this.$newElement.find('button');
+                    this.label = this.$newElement.find('span.label-checkbox');
+                    this.labelPrepend = this.$newElement.find('span.label-prepend-checkbox');
+                    for (var i = 0; i < classList.length; i++) {
+                        if (classList[i] != 'checkbox') {
+                            this.$newElement.addClass(classList[i]);
+                        }
+                    }
+                    this.button.addClass(this.buttonStyle);
+
+                    if (this.$element.data('default-state') != undefined) {
+                        this.defaultState = this.$element.data('default-state');
+                    }
+                    if (this.$element.data('default-enabled') != undefined) {
+                        this.defaultEnabled = this.$element.data('default-enabled');
+                    }
+
+                    this.checkEnabled();
+                    this.checkChecked();
+                    this.checkTabIndex();
+                    this.clickListener();
+                },
+
+                getTemplate: function () {
+                    var template =
+            	'<span class="button-checkbox bootstrap-checkbox">' +
+            		'<button type="button" class="btn clearfix">' +
+	                    '<span class="icon ' + this.options.checkedClass + '" style="display:none;"></span>' +
+	                    '<span class="icon ' + this.options.uncheckedClass + '"></span>' +
+	                '</button>' +
+	            '</span>';
+
+                    var label = this.$element.data('label') ? '<span class="label-checkbox">' + this.$element.data('label') + '</span>' : '',
+            	labelPrepend = this.$element.data('label-prepend') ? '<span class="label-prepend-checkbox">' + this.$element.data('label-prepend') + '</span>' : '';
+
+                    if (this.$element.data('label') || this.$element.data('label-prepend')) {
+                        template =
+            		'<label class="checkbox bootstrap-checkbox">' +
+            			labelPrepend + template + label +
+		            '</label>';
+                    }
+                    return template;
+                },
+
+                checkEnabled: function () {
+                    this.button.attr('disabled', this.$element.is(':disabled'));
+                    this.$newElement.toggleClass('disabled', this.$element.is(':disabled'));
+                },
+
+                checkTabIndex: function () {
+                    if (this.$element.is('[tabindex]')) {
+                        var tabindex = this.$element.attr("tabindex");
+                        this.button.attr('tabindex', tabindex);
+                    }
+                },
+
+                checkChecked: function () {
+                    if (this.$element.is(':checked')) {
+                        this.button.find('span.' + this.options.checkedClass).show();
+                        this.button.find('span.' + this.options.uncheckedClass).hide();
+                        if (this.buttonStyleChecked) {
+                            this.button.addClass(this.buttonStyleChecked);
+                            this.button.removeClass(this.buttonStyle);
+                        }
+                    } else {
+                        this.button.find('span.' + this.options.checkedClass).hide();
+                        this.button.find('span.' + this.options.uncheckedClass).show();
+                        if (this.buttonStyleChecked) {
+                            this.button.addClass(this.buttonStyle);
+                            this.button.removeClass(this.buttonStyleChecked);
+                        }
+                    }
+                },
+
+                clickListener: function () {
+                    var _this = this;
+                    this.button.on('click', function (e) {
+                        e.preventDefault();
+                        _this.$element.click();
+                        _this.checkChecked();
+                    });
+                    this.$element.on('change', function (e) {
+                        _this.checkChecked();
+                    });
+                    this.$element.parents('form').on('reset', function (e) {
+                        _this.$element.prop('checked', _this.defaultState);
+                        _this.$element.prop('disabled', !_this.defaultEnabled);
+                        _this.checkEnabled();
+                        _this.checkChecked();
+                        e.preventDefault();
+                    });
+                },
+
+                setOptions: function (option, event) {
+                    if (option.checked != undefined) {
+                        this.setChecked(option.checked);
+                    }
+                    if (option.enabled != undefined) {
+                        this.setEnabled(option.enabled);
+                    }
+                },
+
+                setChecked: function (checked) {
+                    this.$element.prop("checked", checked);
+                    this.checkChecked();
+                },
+
+                click: function (event) {
+                    this.$element.click();
+                    this.checkChecked();
+                },
+
+                change: function (event) {
+                    this.$element.change();
+                },
+
+                setEnabled: function (enabled) {
+                    this.$element.attr('disabled', !enabled);
+                    this.checkEnabled();
+                },
+
+                toggleEnabled: function (event) {
+                    this.$element.attr('disabled', !this.$element.is(':disabled'));
+                    this.checkEnabled();
+                }
+
+            };
+
+            $.fn.checkbox = function (option, event) {
+                return this.each(function () {
+                    var $this = $(this),
+                data = $this.data('checkbox'),
+                options = typeof option == 'object' && option;
+                    if (!data) {
+                        $this.data('checkbox', (data = new Checkbox(this, options, event)));
+                        if (data.options.constructorCallback != undefined) {
+                            data.options.constructorCallback(data.$element, data.button, data.label, data.labelPrepend);
+                        }
+                    } else {
+                        if (typeof option == 'string') {
+                            data[option](event);
+                        } else {
+                            data.setOptions(option, event);
+                        }
+                    }
+                });
+            };
+
+            $.fn.checkbox.defaults = {
+                buttonStyle: 'btn-link',
+                buttonStyleChecked: null,
+                checkedClass: 'cb-icon-check',
+                uncheckedClass: 'cb-icon-check-empty',
+                defaultState: false,
+                defaultEnabled: true,
+                constructorCallback: null
+            };
+
+        } (window.jQuery);
+
+    
+    </script>
+    <!-- Note : Always keep this script at the bottom of page | To show loading / processing logo -->
+    <script type="text/javascript">
+        if (Sys != null) {
+            Sys.Application.add_load(AppLoad);
+        }
+
+        function AppLoad() {
+            Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(beginRequest);
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(endRequest);
+
+            function beginRequest(sender, args) {
+                // show the popup
+
+
+                document.getElementById("statusPopup").style.position = "fixed";
+                document.getElementById("statusPopup").style.display = "";
+
+            }
+
+            function endRequest(sender, args) {
+                document.getElementById("statusPopup").style.display = "none";
+                seconds = 60 * 18;
+            }
+        }
+       
+    </script>
+    </form>
+</body>
+</html>

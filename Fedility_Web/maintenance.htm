@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Doqman - Vistaar</title>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="css/maintenance.css" rel="stylesheet" type="text/css" />
+</head>
+<body id="home">
+<div class="main">
+<div id="Content" class="wrapper topSection">
+	<div id="Header">
+	<div class="wrapper">
+		<div class="logo"><h1><img src="Assets/Logo/Company_logo.jpg" /> DoQman</h1>	</div>
+		</div>
+	</div>
+	<h2>Under Maintenance. We are coming soon!!!</h2> 	
+<div class="countdown styled"></div>
+</div>
+</div>
+
+<!--Scripts-->
+    <script src="Scripts/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="Scripts/jquery.countdown.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            var endDate = "Sep 25, 2016 18:30:00";
+
+            $('.countdown.simple').countdown({ date: endDate });
+
+            $('.countdown.styled').countdown({
+                date: endDate,
+                render: function (data) {
+                    $(this.el).html("<div>" + this.leadingZeros(data.days, 3) + " <span>days</span></div><div>" + this.leadingZeros(data.hours, 2) + " <span>hrs</span></div><div>" + this.leadingZeros(data.min, 2) + " <span>min</span></div><div>" + this.leadingZeros(data.sec, 2) + " <span>sec</span></div>");
+                }
+            });
+
+            $('.countdown.callback').countdown({
+                date: +(new Date) + 10000,
+                render: function (data) {
+                    $(this.el).text(this.leadingZeros(data.sec, 2) + " sec");
+                },
+                onEnd: function () {
+                    $(this.el).addClass('ended');
+                }
+            }).on("click", function () {
+                $(this).removeClass('ended').data('countdown').update(+(new Date) + 10000).start();
+            });
+
+
+
+        });
+        </script>
+        </body>
+</html>

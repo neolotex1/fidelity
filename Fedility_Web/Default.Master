@@ -1,0 +1,141 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.master.cs" Inherits="Lotex.EnterpriseSolutions.WebUI.Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>doQman</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" language="javascript" src="<%= Page.ResolveClientUrl("~/Scripts/modernizr-2.5.3.js") %>"></script>
+    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-1.7-vsdoc.js") %>"></script>
+    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-1.7.min.js") %>"></script>
+    <script type="text/javascript" src="<%= Page.ResolveClientUrl("~/Scripts/jquery-1.7.js") %>"></script>
+    <script type="text/javascript" language="javascript" src="<%=Page.ResolveClientUrl("~/Scripts/AjaxPostScripts.js") %>"></script>    
+    <script type="text/javascript" language="javascript" src="<%=Page.ResolveClientUrl("~/Scripts/Common.js") %>"></script>
+    <link id="Link1" rel="shortcut icon" href="<%= Page.ResolveClientUrl("~/Images/favicon1.ico") %>"
+        type="image/x-icon" />
+   
+    <script type="text/javascript" language="javascript">
+
+        //service url
+        var authority = getRootWebSitePath();
+        var coreServiceURL = authority + "/CoreService.svc";
+
+        function getRootWebSitePath() {
+            var _location = document.location.toString();
+            var applicationNameIndex = _location.indexOf('/', _location.indexOf('://') + 3);
+            var applicationName = _location.substring(0, applicationNameIndex) + '/';
+            var webFolderIndex = _location.indexOf('/', _location.indexOf(applicationName) + applicationName.length);
+            var webFolderFullPath = _location.substring(0, webFolderIndex);
+            //If develoment environement WEB folder won't be there
+            webFolderFullPath = webFolderFullPath.replace('/Accounts', '');
+            return webFolderFullPath;
+        }
+
+    </script>
+    <script language="javascript" type="text/javascript">
+        function prevent_previous_page_return() {
+            window.history.forward();
+        }
+        function imgLogo_onclick() {
+
+        }
+
+    </script>
+  
+    <!--STYLESHEET-->
+    <!--=================================================-->
+    <!--Open Sans Font [ OPTIONAL ] -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin"
+        rel="stylesheet">
+    <!--Bootstrap Stylesheet [ REQUIRED ]-->
+    <link href="<%= Page.ResolveClientUrl("~/css/bootstrap.min.css") %>" rel="stylesheet" />
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <link href="<%= Page.ResolveClientUrl("~/css/nifty.min.css") %>" rel="stylesheet" />    
+    <link href="<%= Page.ResolveClientUrl("~/plugins/bootstrap-select/bootstrap-select.min.css") %>" rel="stylesheet" />
+
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href="<%= Page.ResolveClientUrl("~/plugins/font-awesome/css/font-awesome.min.css") %>" rel="stylesheet" />
+    <!--Demo [ DEMONSTRATION ]-->
+    <link href="<%= Page.ResolveClientUrl("~/css/demo/nifty-demo.min.css") %>" rel="stylesheet" />
+    <!--SCRIPT-->
+    <!--=================================================-->
+    <!--Page Load Progress Bar [ OPTIONAL ]-->
+    <link href="<%= Page.ResolveClientUrl("~/plugins/pace/pace.min.css") %>" rel="stylesheet" />
+        <script src="<%= Page.ResolveClientUrl("~/plugins/pace/pace.min.js") %>" type="text/javascript" language="javascript"></script>
+    <asp:ContentPlaceHolder ID="Head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="container" class="cls-container">
+        <!-- BACKGROUND IMAGE -->
+        <!--===================================================-->
+        <div id="bg-overlay" class="bg-img img-balloon">
+        </div>
+        <!-- HEADER -->
+        <!--===================================================-->
+        <div class="cls-header cls-header-lg">
+            <div class="cls-brand" >
+                <a class="box-inline" href="#" style="padding-left: 1000px;" >
+                    <img runat="server" alt="" src="" class="brand-icon" id="imgLogo" /></a>
+            </div>
+        </div>
+        <div id="statusPopup" style="display: none; z-index: 1000; left: 49%; top: 49%;">
+            <div>
+              
+                <img src="<%= Page.ResolveClientUrl("~/Images/sprites.gif") %>" alt="Loading......" />
+            </div>
+        </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+        <!--===================================================-->
+        <!-- END OF CONTAINER -->
+    </div>
+    </form>
+    <!--JAVASCRIPT-->
+    <!--=================================================-->
+    <!--jQuery [ REQUIRED ]-->
+    <script src="../js/jquery-2.1.1.min.js"></script>
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="../js/bootstrap.min.js"></script>
+	<script src="../plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+    <!--Fast Click [ OPTIONAL ]-->
+    <script src="<%= Page.ResolveClientUrl("~/plugins/fast-click/fastclick.min.js") %>" type="text/javascript" language="javascript"></script>
+  
+    <!--Nifty Admin [ RECOMMENDED ]-->
+	 <!--Demo script [ DEMONSTRATION ]-->
+   
+    <script src="../js/nifty.min.js"></script>
+    <!-- Note : Always keep this script at the bottom of page | To show loading / processing logo -->
+       <script type="text/javascript">
+           if (Sys != null) {
+               Sys.Application.add_load(AppLoad);
+           }
+
+           function AppLoad() {
+               Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(beginRequest);
+               Sys.WebForms.PageRequestManager.getInstance().add_endRequest(endRequest);
+
+               function beginRequest(sender, args) {
+                   // show the popup
+
+
+                   document.getElementById("statusPopup").style.position = "fixed";
+                   document.getElementById("statusPopup").style.display = "";
+
+               }
+
+               function endRequest(sender, args) {
+                   document.getElementById("statusPopup").style.display = "none";
+                   seconds = 60 * 18;
+               }
+           }
+       
+    </script>
+    
+</body>
+</html>

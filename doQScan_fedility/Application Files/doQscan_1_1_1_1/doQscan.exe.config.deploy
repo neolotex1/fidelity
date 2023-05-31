@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================================ -->
+<!-- Author     : Vijay Varghese Puthukkara -->
+<!-- Create date: 05/Jul/2016 -->
+<!-- =============================================================================== -->
+<!-- ** Change History -->
+<!-- ** Date:        Author:                     Issue ID      Description: -->
+<!--    05/Jul/2016  Vijay Varghese Puthukkara   LBS_SHD-7394  Converting doQrouter to Image Uploaded for ESAF -->
+<!-- ** =============================================================================== -->
+<configuration>
+  <configSections>
+    <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <section name="CAF_Scan.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+    </sectionGroup>
+  </configSections>
+  <startup useLegacyV2RuntimeActivationPolicy="true" />
+  <appSettings>
+
+    <add key="ConnectionStirng_Name" value="doQscan_ConnectionStirng" />
+
+    <!--New Service URI start-->
+    <add key="ApplicationOrgcode" value="252" />
+    <add key="ServiceURI" value="http://172.16.1.122:92/doQService/Service.svc" />
+    <!--<add key="ServiceURI" value=" http://localhost:1775/Service.svc" />-->
+
+   
+    <!--SUS URI start-->
+    <add key="SUSURI" value="http://172.16.1.122:92/doQscanwindows/publish.htm" />    
+    <!--New Service URI end-->
+    <!--Dat files folder-->
+    <!--<add key="RouterServiceUrl" value="http://localhost:1147/doQreceiver/Default.aspx" />-->
+    <add key="RouterServiceUrl" value="http://172.16.1.11:81/DoQReceiver/Default.aspx" />
+    <!--<add key="RouterServiceUrl" value="http://localhost:82/Reciever/Default.aspx" />-->
+    <add key="uploaderTimeout" value="1500000" />
+    
+    <!--service path for doqreceiver(ImageUploader)-->
+    <!-- Logger settings start-->
+    <!--To enable(True) or disable(False) Exception log.-->
+    <add key="logExceptionIsEnabled" value="True" />
+    <!--To enable(True) or disable(False) Trace log.-->
+    <add key="logTraceIsEnabled" value="True" />
+    <!-- Note : If logExceptionPath and logTracePath values are same application will create both logs (Exception and Trace) in single file. -->
+    <!--To set Exception log path. Do not use '/' or '\' at the end of the path-->
+    <add key="logExceptionPath" value="doQscanLogs" />
+    <add key="win_logExceptionPath" value="doQscanLogs" />
+    <!--To set Trace log path. Do not use '/' or '\' at the end of the path-->
+    <add key="logTracePath" value="doQscanLogs" />
+    <add key="win_logTracePath" value="doQscanLogs" />
+    <!-- Logger settings start end-->
+    <add key="OCR_Language" value="eng"/>
+    <!-- doQscan Root folder path [Note: If it is empty system will take default path i.e., C:\ProgramData\doQscan 1.0.0.0\]-->
+    <add key="PathRootFolder" value="/Lotex/Data" />
+    <add key="win_PathRootFolder" value="D:\Lotex\Data" />
+    <!-- Scanned Images Output Path  [Note: it is a combination of PathMainFolder and PathScannedOutput] -->
+    <add key="FolderScannedFiles" value="ScannedFiles" />
+    <add key="win_FolderScannedFiles" value="ScannedFiles" />
+    <!-- Ready for Upload Images Output Path [Note: it is a combination of PathMainFolder and PathScannedOutput]-->
+    <add key="FolderUploadFiles" value="UploadFiles" />
+    <add key="win_FolderUploadFiles" value="UploadFiles" />
+
+    <add key="TempScannedFiles" value="TempScannedFiles"/>
+    <add key="win_TempScannedFiles" value="TempScannedFiles"/>
+    <!-- Licence information storage for scanner]-->
+    <add key="LicencePath" value="/Lotex/doQscan/Data" />
+    <add key="win_LicencePath" value="Lotex\doQscan\Data" />
+    <!--Application debug mode (boolean value) start-->
+    <add key="DebugMode" value="false" />
+    <!--Application debug mode end-->
+    <add key="ClientSettingsProvider.ServiceUri" value="" />
+
+    <!--Required confiurations for ImageUploaded. LBS_SHD-7394 A starts...-->
+    <add key="TimerKey" value="3000" />
+    <!--to set timer for status updating value="900000"-->
+    <add key="ProcessName" value="Image Uploader" />
+    <!--name of Image Uploader-->
+    <add key="XmlFolder" value="XML" />
+    <add key="win_XmlFolder" value="XML" />
+    <!--name of xml folder to save the pdf converted xml file-->
+    <add key="BackUpFolder" value="Backup" />
+    <add key="win_BackUpFolder" value="Backup" />
+    <!--name of backup folder to save the pdf on deleting the file from upload folder-->
+    <add key="LogdoQrouter" value="doQrouterLogs" />
+    <add key="win_LogdoQrouter" value="doQrouterLogs" />
+    <!--log folder of ImageUploaderLog-->
+    <add key="DataFolder" value="Data" />
+    <add key="win_DataFolder" value="Data" />
+
+    <add key="PurgeLogsOlderthan" value="5" />
+    <add key="DataFilePurge" value="30" />
+    <add key="ImageFilePurge" value="1" />
+    <add key="KeepImageBackup" value="1" />
+    <add key="KeepXMLBackup" value="0" />
+    <add key="KeepReturnXML" value="0" />
+    <add key="ScannerID" value="1001" />
+    <add key="IsNotDebugMode" value="True" />
+    <!--Required confiurations for ImageUploaded. LBS_SHD-7394 A ends...-->
+
+    <!--Inward Free Text labels: Change Alias names in SP: USP_MANAGE_INWARD-->
+    <add key="FreeText1" value="No. of Applications"/>
+    <add key="FreeText2" value="FreeText 2"/>
+    <add key="FreeText3" value="FreeText 3"/>
+    <!--Inward Free Text labels Enable or Disable-->
+    <add key="EnableFreeText1" value="false"/>
+    <add key="EnableFreeText2" value="false"/>
+    <add key="EnableFreeText3" value="false"/>
+  </appSettings>
+
+  <system.web>
+    <membership defaultProvider="ClientAuthenticationMembershipProvider">
+      <providers>
+        <add name="ClientAuthenticationMembershipProvider" type="System.Web.ClientServices.Providers.ClientFormsAuthenticationMembershipProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" />
+      </providers>
+    </membership>
+    <roleManager defaultProvider="ClientRoleProvider" enabled="true">
+      <providers>
+        <add name="ClientRoleProvider" type="System.Web.ClientServices.Providers.ClientRoleProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" cacheTimeout="86400" />
+      </providers>
+    </roleManager>
+  </system.web>
+</configuration>

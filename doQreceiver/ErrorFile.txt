@@ -1,0 +1,405 @@
+ 
+********************************
+Event Time : 22/12/2016 16:44:04
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 65
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 16:51:51
+Error Description : Failed to convert parameter value from a HttpInputStream to a Int32.
+Error Line Number :    at System.Data.SqlClient.SqlParameter.CoerceValue(Object value, MetaType destinationType, Boolean& coercedToDataFeed, Boolean& typeChanged, Boolean allowStreaming)
+   at System.Data.SqlClient.SqlParameter.GetCoercedValue()
+   at System.Data.SqlClient.SqlParameter.Validate(Int32 index, Boolean isCommandProc)
+   at System.Data.SqlClient.SqlCommand.SetUpRPCParameters(_SqlRPC rpc, Int32 startCount, Boolean inSchema, SqlParameterCollection parameters)
+   at System.Data.SqlClient.SqlCommand.BuildRPC(Boolean inSchema, SqlParameterCollection parameters, _SqlRPC& rpc)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at doQRouter.clsCommon.CheckLAN_AlreadyUpdated(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 356
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 48
+   at _Default.Page_Load(Object sender, EventArgs e) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\Default.aspx.cs:line 25
+Error Source		 : System.Data
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 16:56:16
+Error Description : Failed to convert parameter value from a HttpInputStream to a String.
+Error Line Number :    at System.Data.SqlClient.SqlParameter.CoerceValue(Object value, MetaType destinationType, Boolean& coercedToDataFeed, Boolean& typeChanged, Boolean allowStreaming)
+   at System.Data.SqlClient.SqlParameter.GetCoercedValue()
+   at System.Data.SqlClient.SqlParameter.Validate(Int32 index, Boolean isCommandProc)
+   at System.Data.SqlClient.SqlCommand.SetUpRPCParameters(_SqlRPC rpc, Int32 startCount, Boolean inSchema, SqlParameterCollection parameters)
+   at System.Data.SqlClient.SqlCommand.BuildRPC(Boolean inSchema, SqlParameterCollection parameters, _SqlRPC& rpc)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable[] dataTables, Int32 startRecord, Int32 maxRecords, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataTable dataTable)
+   at doQRouter.clsCommon.CheckLAN_AlreadyUpdated(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 356
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 48
+   at _Default.Page_Load(Object sender, EventArgs e) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\Default.aspx.cs:line 25
+Error Source		 : System.Data
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:02:34
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.CheckLAN_AlreadyUpdated(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 346
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 48
+   at _Default.Page_Load(Object sender, EventArgs e) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\Default.aspx.cs:line 25
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:05:28
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.CheckLAN_AlreadyUpdated(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 346
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 48
+   at _Default.Page_Load(Object sender, EventArgs e) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\Default.aspx.cs:line 25
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:08:35
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.CheckLAN_AlreadyUpdated(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 346
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 48
+   at _Default.Page_Load(Object sender, EventArgs e) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\Default.aspx.cs:line 25
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:13:56
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.CheckLAN_AlreadyUpdated(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 350
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 48
+   at _Default.Page_Load(Object sender, EventArgs e) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\Default.aspx.cs:line 25
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:15:37
+Error Description : The handle is invalid.
+
+Error Line Number :    at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.WriteCore(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.FileStream.FlushInternalBuffer()
+   at System.IO.FileStream.Flush(Boolean flushToDisk)
+   at System.IO.FileStream.Flush()
+   at System.IO.StreamWriter.Flush(Boolean flushStream, Boolean flushEncoder)
+   at System.IO.StreamWriter.Dispose(Boolean disposing)
+   at System.IO.StreamWriter.Close()
+   at doQRouter.clsCommon.WriteErrorToFIle(Exception exe) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 433
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 328
+   at _Default.Page_Load(Object sender, EventArgs e) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\Default.aspx.cs:line 25
+Error Source		 : mscorlib
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:16:01
+Error Description : Connection Timeout Expired.  The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement.  This could be because the pre-login handshake failed or the server was unable to respond back in time.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=21015; handshake=0; 
+Error Line Number :    at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake(Boolean encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean& marsCapable)
+   at System.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, Boolean encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at System.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at System.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at doQRouter.clsCommon.CheckLAN_AlreadyUpdated(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 366
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 48
+   at _Default.Page_Load(Object sender, EventArgs e) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\Default.aspx.cs:line 25
+Error Source		 : .Net SqlClient Data Provider
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:20:41
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.CheckLAN_AlreadyUpdated(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 345
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 48
+   at _Default.Page_Load(Object sender, EventArgs e) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\Default.aspx.cs:line 25
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:20:42
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 74
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:20:44
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 74
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:21:56
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.CheckLAN_AlreadyUpdated(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 345
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 48
+   at _Default.Page_Load(Object sender, EventArgs e) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\Default.aspx.cs:line 25
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:21:56
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 74
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:22:09
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.CheckLAN_AlreadyUpdated(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 345
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 48
+   at _Default.Page_Load(Object sender, EventArgs e) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\Default.aspx.cs:line 25
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:22:09
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 74
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:23:17
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 74
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:23:19
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 74
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:23:50
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.CheckLAN_AlreadyUpdated(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 345
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 48
+   at _Default.Page_Load(Object sender, EventArgs e) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\Default.aspx.cs:line 25
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:23:51
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 74
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:24:16
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.CheckLAN_AlreadyUpdated(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 345
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 48
+   at _Default.Page_Load(Object sender, EventArgs e) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\Default.aspx.cs:line 25
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:24:17
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 74
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
+ 
+********************************
+Event Time : 22/12/2016 17:52:46
+Error Description : Root element is missing.
+Error Line Number :    at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.Load(Stream inStream)
+   at doQRouter.clsCommon.ExtractFiles(Stream strSourceXml) in d:\Lotex\projects\doQman_Vistaar_October_2016\trunk\SourceCode\doQreceiver\App_Code\clsCommon.cs:line 65
+Error Source		 : System.Xml
+user	 : Aswin.a
+********************************
+ 
